@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.avatar-container {
+    position: relative;
+    width: 15vw;
+    /* Reduced from 20vw */
+    max-width: 150px;
+    /* Reduced from 200px */
+    min-width: 100px;
+    /* Reduced from 120px */
+    aspect-ratio: 1;
+    margin: 0 auto;
+}
+
+.education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    position: relative;
+    /* Add this */
+}
+
+.logo-container {
+    width: 100px;
+    /* Increased from 60px */
+    height: 100px;
+    /* Increased from 60px */
+    position: absolute;
+    /* Add this */
+    right: 20px;
+    /* Add this */
+    top: 50%;
+    /* Add this */
+    transform: translateY(-50%);
+    /* Add this */
+}
+
+.school-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(1.2);
+    /* Makes the logo slightly brighter */
+}
+
+.education-content {
+    background: rgba(30, 10, 79, 0.8);
+    padding: 20px 120px 20px 20px;
+    /* Add right padding to make space for logo */
+    border-radius: 10px;
+    border-left: 2px solid var(--accent-blue);
+    position: relative;
+    /* Add this */
+}
+
+.education-info {
+    flex-grow: 1;
+    margin-right: 120px;
+    /* Add space for logo */
+}
