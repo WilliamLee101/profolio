@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <section className="contact">
       <h2>Contact</h2>
-      <p>I'm actively looking to participate in exciting research projects and internships in the field of machine learning and software engineering.</p>
+      <p>I'm actively looking for PhD positions.</p>
       <p>Email: leewill@bu.edu</p>
       <div className="social-buttons flex justify-center gap-4 mt-6">
         <a 
@@ -23,13 +23,21 @@ const Contact = () => {
         >
           GitHub
         </a>
-        <a 
-          href="https://drive.google.com/file/d/1Ef2gQLUnEzSTIVV6GT4WuIBA43OOercY/view?usp=sharing" // Replace with your Google Drive shared link
-          target="_blank" 
+        <a
+          href="https://scholar.google.com/citations?user=REPLACE_WITH_YOUR_ID" // Replace with your Google Scholar profile URL
+          target="_blank"
           rel="noopener noreferrer"
-          className="social-button resume"
+          className="social-button scholar"
         >
-          Resume
+          Google Scholar
+        </a>
+        <a
+          href={`${process.env.PUBLIC_URL}/CV.pdf`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-button cv"
+        >
+          CV
         </a>
       </div>
     </section>

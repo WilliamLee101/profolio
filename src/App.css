@@ -1,55 +1,40 @@
 :root {
-    --primary-dark: #0a001f;
-    --primary-light: #1a0f3c;
-    --accent-blue: #00ffff;
-    --accent-purple: #ff00ff;
-    --accent-secondary: #ffff00;
-    --grid-lines: rgba(0, 255, 255, 0.1);
-}
+    /* Background layers */
+    --primary-dark:    #150f0c;
+    --primary-mid:     #1f1611;
+    --primary-light:   #2c1e15;
 
-:root {
-    --primary-dark: #000000;
-    --primary-light: #1F2833;
-    --accent-blue: #45A29E;
-    --accent-glow: #66FCF1;
-    --arc-reactor: #00BFFF;
-    --accent-secondary: #C5C6C7;
-    --grid-lines: rgba(102, 252, 241, 0.1);
-}
+    /* Accents — Solar Flare */
+    --accent-blue:     #fb923c;   /* orange      — policy/latent space */
+    --accent-purple:   #f472b6;   /* pink        — uncertainty */
+    --accent-cyan:     #fbbf24;   /* amber       — exploration */
+    --accent-green:    #facc15;   /* yellow      — reward */
+    --accent-warm:     #f97316;   /* deep orange — confidence / stopping */
+    --accent-secondary:#b8a08e;   /* warm taupe  — muted text */
 
-:root {
-    --primary-dark: #0C1115;
-    --primary-light: #1C2333;
-    --accent-blue: #00FF41;
-    --accent-purple: #00CC00;
-    --accent-secondary: #00CC00;
-    --grid-lines: rgba(0, 255, 65, 0.1);
-}
+    /* Cards & surfaces */
+    --card-bg:         rgba(31, 22, 17, 0.92);
+    --card-border:     rgba(251, 146, 60, 0.24);
+    --card-hover-glow: rgba(251, 146, 60, 0.3);
 
-:root {
-    --primary-dark: #09203F;
-    --primary-light: #1C3A5E;
-    --accent-blue: #00FF41;
-    --accent-purple: #537895;
-    --accent-secondary: #FF3CAC;
-    --grid-lines: rgba(0, 255, 135, 0.1);
-}
+    /* Text */
+    --text-primary:    #f5ece3;
+    --text-muted:      #b8a08e;
 
-:root {
-    --primary-dark: #14213D;
-    --primary-light: #1C2C4F;
-    --accent-blue: #FCA311;
-    --accent-purple: #00BFA6;
-    --accent-secondary: #FF006E;
-    --grid-lines: rgba(252, 163, 17, 0.1);
+    /* Grid overlay */
+    --grid-lines:      rgba(251, 146, 60, 0.08);
 }
 
 body {
     background-color: var(--primary-dark);
-    color: #ffffff;
+    color: var(--text-primary);
     font-family: 'Space Mono', monospace;
-    background-image: linear-gradient(var(--grid-lines) 1px, transparent 1px), linear-gradient(90deg, var(--grid-lines) 1px, transparent 1px);
-    background-size: 30px 30px;
+    font-weight: 700;
+    background-image:
+        linear-gradient(var(--grid-lines) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-lines) 1px, transparent 1px);
+    background-size: 40px 40px;
+    line-height: 1.6;
 }
 
 .research-card,
@@ -62,7 +47,7 @@ body {
 .research-card:hover,
 .experience-card:hover,
 .project-card:hover {
-    box-shadow: 0 0 20px rgba(102, 252, 241, 0.5);
+    box-shadow: 0 0 24px var(--card-hover-glow);
 }
 
 .App {
@@ -72,20 +57,22 @@ body {
 }
 
 header {
-    background: rgba(10, 3, 35, 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(21, 15, 12, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 20px;
-    border-bottom: 1px solid var(--accent-blue);
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--card-border);
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     color: var(--accent-blue);
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    text-shadow: 0 0 12px rgba(251, 146, 60, 0.5);
+    letter-spacing: 2px;
 }
 
 nav a {
@@ -124,7 +111,7 @@ nav a:hover::after {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 30%, var(--accent-blue) 0%, transparent 10%), radial-gradient(circle at 70% 70%, var(--accent-purple) 0%, transparent 10%);
+    background: radial-gradient(circle at 30% 30%, var(--accent-blue) 0%, transparent 12%), radial-gradient(circle at 70% 70%, var(--accent-cyan) 0%, transparent 12%);
     opacity: 0.1;
     z-index: -1;
 }
@@ -151,13 +138,13 @@ nav a:hover::after {
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--accent-blue);
-    box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+    box-shadow: 0 0 28px rgba(251, 146, 60, 0.25);
 }
 
 .research-card,
 .experience-card,
 .project-card {
-    background: rgba(30, 10, 79, 0.8);
+    background: var(--card-bg);
     border: 1px solid var(--accent-blue);
     border-radius: 10px;
     padding: 20px;
@@ -187,19 +174,22 @@ nav a:hover::after {
 }
 
 .skill-item {
-    background: rgba(30, 10, 79, 0.8);
-    border: 1px solid var(--accent-blue);
+    background: rgba(251, 146, 60, 0.07);
+    border: 1px solid var(--card-border);
     color: var(--accent-blue);
-    padding: 8px 15px;
+    padding: 6px 14px;
     border-radius: 20px;
-    margin: 5px;
-    font-size: 14px;
-    transition: all 0.3s ease;
+    margin: 4px;
+    font-size: 0.78rem;
+    transition: all 0.25s ease;
+    white-space: nowrap;
 }
 
 .skill-item:hover {
     background: var(--accent-blue);
     color: var(--primary-dark);
+    border-color: var(--accent-blue);
+    transform: translateY(-1px);
 }
 
 
@@ -232,12 +222,14 @@ nav a:hover::after {
 
 h2 {
     display: inline-block;
-    padding: 10px 20px;
-    background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
-    border-left: 4px solid var(--accent-blue);
+    padding: 8px 20px 8px 16px;
+    background: linear-gradient(90deg, rgba(251, 146, 60, 0.08), transparent);
+    border-left: 3px solid var(--accent-blue);
     font-family: 'Space Mono', monospace;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--text-primary);
 }
 
 .avatar-container {
@@ -258,7 +250,7 @@ h2 {
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--accent-blue);
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+    box-shadow: 0 0 20px rgba(251, 146, 60, 0.2);
 }
 
 .avatar-glow {
@@ -286,7 +278,7 @@ h2 {
 .research-card {
     display: flex;
     flex-direction: column;
-    background: rgba(30, 10, 79, 0.8);
+    background: var(--card-bg);
     border-radius: 15px;
     overflow: hidden;
     transition: transform 0.3s ease;
@@ -339,7 +331,7 @@ h2 {
 }
 
 .experience-card {
-    background: rgba(30, 10, 79, 0.8);
+    background: var(--card-bg);
     border-radius: 10px;
     border: 1px solid var(--accent-blue);
     padding: 30px;
@@ -422,7 +414,7 @@ h2 {
 
 .skill-tag {
     background: var(--accent-purple);
-    color: white;
+    color: var(--primary-dark);
     padding: 6px 12px;
     border-radius: 15px;
     font-size: 0.9em;
@@ -440,7 +432,7 @@ h2 {
 }
 
 .project-card {
-    background: rgba(30, 10, 79, 0.8);
+    background: var(--card-bg);
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -503,7 +495,7 @@ h2 {
 
 .tech-tag {
     background: var(--accent-purple);
-    color: white;
+    color: var(--primary-dark);
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
     font-size: 0.8rem;
@@ -541,7 +533,7 @@ h2 {
 }
 
 .education-content {
-    background: rgba(30, 10, 79, 0.8);
+    background: var(--card-bg);
     padding: 30px;
     border-radius: 10px;
     border-left: 2px solid var(--accent-blue);
@@ -582,7 +574,7 @@ h2 {
     height: 100%;
     object-fit: cover;
     border: 2px solid var(--accent-blue);
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+    box-shadow: 0 0 20px rgba(251, 146, 60, 0.2);
 }
 
 header {
@@ -697,7 +689,8 @@ nav a::after {
 }
 
 .research-detail-info section {
-    background: rgba(30, 10, 79, 0.8);
+    background: rgba(26, 18, 14, 0.85);
+    border: 1px solid var(--card-border);
     padding: 1.5rem;
     border-radius: 10px;
     margin-bottom: 1.5rem;
@@ -733,6 +726,178 @@ nav a::after {
 }
 
 
+/* Papers & Publications */
+
+.papers-section {
+    margin-top: 2rem;
+}
+
+.papers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.paper-item {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.25rem;
+    border: 1px solid var(--card-border);
+    border-left: 4px solid var(--accent-blue);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.paper-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px var(--card-hover-glow);
+}
+
+.paper-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.paper-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.paper-title a:hover {
+    color: var(--accent-blue);
+    text-decoration: underline;
+}
+
+.paper-authors {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin: 0.25rem 0 0.75rem;
+    font-style: italic;
+}
+
+.person-link {
+    color: var(--accent-blue);
+    text-decoration: underline;
+    text-decoration-color: var(--card-border);
+    transition: color 0.2s;
+}
+
+.person-link:hover {
+    color: var(--accent-cyan);
+}
+
+.paper-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+}
+
+.paper-venue {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.paper-status {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.paper-status.accepted {
+    background-color: rgba(52, 211, 153, 0.12);
+    color: var(--accent-green);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.paper-status.published {
+    background-color: rgba(103, 232, 249, 0.1);
+    color: var(--accent-cyan);
+    border: 1px solid rgba(103, 232, 249, 0.3);
+}
+
+.paper-status.under-review {
+    background-color: rgba(251, 191, 36, 0.1);
+    color: var(--accent-warm);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.paper-status.preprint {
+    background-color: rgba(251, 146, 60, 0.1);
+    color: var(--accent-blue);
+    border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.pub-year {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--accent-blue);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 2rem 0 1rem;
+}
+
+.pub-year::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--card-border);
+}
+
+.pub-year:first-of-type {
+    margin-top: 0;
+}
+
+.publications-intro {
+    color: var(--text-muted);
+    max-width: 70ch;
+    margin: -1rem 0 1rem;
+    line-height: 1.6;
+}
+
+.presentations-section {
+    margin-top: 3rem;
+}
+
+.presentations-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.presentations-list li {
+    padding-left: 1.25rem;
+    position: relative;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.presentations-list li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+.presentations-list .venue-tag {
+    color: var(--accent-purple);
+    font-weight: 600;
+}
+
+
 /* Social Buttons */
 
 .social-buttons {
@@ -761,14 +926,19 @@ nav a::after {
     color: white;
 }
 
-.social-button.resume {
+.social-button.scholar {
+    background: #4285F4;
+    color: white;
+}
+
+.social-button.cv {
     background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
     color: var(--primary-dark);
 }
 
 .social-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 240, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(251, 146, 60, 0.25);
 }
 
 .education-info {
@@ -897,9 +1067,7 @@ canvas {
     text-decoration: none;
 }
 
-.nav-right a.active {
-    color: your-accent-color;
-}
+/* active nav handled below */
 
 
 /* Just add these media-specific styles while keeping your original layout */
@@ -910,7 +1078,7 @@ canvas {
     border: 1px solid var(--accent-blue);
     border-radius: 10px;
     overflow: hidden;
-    background: rgba(30, 10, 79, 0.8);
+    background: var(--card-bg);
 }
 
 .research-media-container:last-child {
@@ -929,4 +1097,344 @@ canvas {
     color: var(--accent-secondary);
     font-size: 0.9rem;
     border-top: 1px solid var(--accent-blue);
+}
+
+/* ── Hero badges ── */
+.hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+/* ── Featured research card on Home ── */
+.research-focus-card {
+    max-width: 680px;
+    margin: 2.5rem auto 0;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--accent-blue);
+    border-radius: 14px;
+    padding: 1.5rem 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.research-focus-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+}
+
+.research-focus-card:hover {
+    box-shadow: 0 0 28px rgba(252, 163, 17, 0.25);
+    transform: translateY(-3px);
+}
+
+.research-focus-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+}
+
+.focus-label {
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.focus-badge {
+    background: var(--accent-blue);
+    color: var(--primary-dark);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.focus-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    line-height: 1.4;
+}
+
+.focus-desc {
+    font-size: 0.88rem;
+    color: var(--accent-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.focus-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.focus-tag {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid var(--accent-purple);
+    color: var(--accent-purple);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
+
+.focus-cta {
+    display: inline-block;
+    font-size: 0.82rem;
+    color: var(--accent-blue);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: letter-spacing 0.2s;
+}
+
+.research-focus-card:hover .focus-cta {
+    letter-spacing: 1.5px;
+}
+
+/* ── Skills grouped layout ── */
+.skill-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.skill-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.skill-group-label {
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    font-weight: 700;
+    min-width: 80px;
+    padding-top: 8px;
+    flex-shrink: 0;
+}
+
+/* ── Featured research card badge ── */
+.research-card-featured {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 18px rgba(252, 163, 17, 0.15);
+}
+
+.featured-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--accent-blue);
+    color: var(--primary-dark);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    z-index: 5;
+}
+
+/* paper-status.preprint handled in ResearchDetail inline styles */
+
+/* ── Active nav link fix ── */
+.nav-right a.active {
+    color: var(--accent-blue);
+    font-weight: 700;
+}
+
+/* ════════════════════════════════════════════════════
+   EYE-CATCHING EFFECTS
+   ════════════════════════════════════════════════════ */
+
+/* 1. Animated gradient text for hero name */
+@keyframes gradient-shift {
+    0%   { background-position: 0%   50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0%   50%; }
+}
+
+.highlight {
+    background: linear-gradient(
+        270deg,
+        var(--accent-blue),
+        var(--accent-cyan),
+        var(--accent-green),
+        var(--accent-warm),
+        var(--accent-purple),
+        var(--accent-blue)
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 5s ease infinite;
+}
+
+/* 2. Card shimmer sweep on hover */
+.research-card::after,
+.project-card::after,
+.experience-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.06),
+        transparent
+    );
+    transition: left 0.55s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.research-card:hover::after,
+.project-card:hover::after,
+.experience-card:hover::after {
+    left: 150%;
+}
+
+/* 3. Orbital rings around profile picture */
+@keyframes orbit-cw {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+@keyframes orbit-ccw {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(-360deg); }
+}
+
+.hero-content .relative::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: -14px;
+    right: -14px;
+    bottom: -14px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: var(--accent-blue);
+    border-right-color: var(--accent-cyan);
+    animation: orbit-cw 3.5s linear infinite;
+    pointer-events: none;
+}
+
+.hero-content .relative::after {
+    content: '';
+    position: absolute;
+    top: -26px;
+    left: -26px;
+    right: -26px;
+    bottom: -26px;
+    border-radius: 50%;
+    border: 1.5px solid transparent;
+    border-bottom-color: var(--accent-warm);
+    border-left-color: var(--accent-green);
+    animation: orbit-ccw 6s linear infinite;
+    pointer-events: none;
+}
+
+/* 4. Logo glitch on hover */
+@keyframes glitch {
+    0%  { text-shadow: none; transform: none; }
+    20% { text-shadow: -2px 0 var(--accent-cyan), 2px 0 var(--accent-warm); transform: translateX(1px); }
+    40% { text-shadow:  2px 0 var(--accent-warm), -2px 0 var(--accent-cyan); transform: translateX(-1px); }
+    60% { text-shadow: -2px 0 var(--accent-purple), 2px 0 var(--accent-green); transform: translateX(0); }
+    80% { text-shadow:  2px 0 var(--accent-blue), -2px 0 var(--accent-warm); transform: translateX(1px); }
+    100%{ text-shadow: none; transform: none; }
+}
+
+.logo:hover {
+    animation: glitch 0.45s steps(1) infinite;
+    cursor: default;
+}
+
+/* 5. Fade-up entrance for hero elements */
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content > *:nth-child(1) { animation: fade-up 0.6s ease 0.05s both; }
+.hero-content > *:nth-child(2) { animation: fade-up 0.6s ease 0.20s both; }
+.hero-content > *:nth-child(3) { animation: fade-up 0.6s ease 0.35s both; }
+.hero-content > *:nth-child(4) { animation: fade-up 0.6s ease 0.50s both; }
+
+/* 6. Tagline typing cursor */
+.tagline {
+    position: relative;
+    display: inline-block;
+}
+
+.tagline::after {
+    content: '|';
+    margin-left: 3px;
+    color: var(--accent-cyan);
+    animation: blink-cursor 1s step-end infinite;
+}
+
+@keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+/* 7. Skill badge pop on hover */
+.skill-item:hover {
+    transform: translateY(-2px) scale(1.08);
+    box-shadow: 0 4px 14px rgba(251, 146, 60, 0.35);
+}
+
+/* 8. Research focus card — shimmer top border chase */
+@keyframes border-chase {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.research-focus-card::before {
+    background: linear-gradient(
+        90deg,
+        var(--accent-blue),
+        var(--accent-cyan),
+        var(--accent-green),
+        var(--accent-warm),
+        var(--accent-blue)
+    );
+    background-size: 200% 100%;
+    animation: border-chase 3s linear infinite;
+}
+
+/* 9. Nav link colour on hover */
+.nav-right a:hover {
+    color: var(--accent-cyan);
 }

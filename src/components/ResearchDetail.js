@@ -1,16 +1,79 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+const AUTHOR_LINKS = {
+  'Aldo Pacchiano': 'https://www.aldopacchiano.ai/#about',
+  'Alessio Russo': 'https://www.alessiorusso.net'
+};
+
+const renderAuthors = (authors) =>
+  authors.split(', ').map((part, index, arr) => {
+    const name = part.replace('*', '');
+    const suffix = part.includes('*') ? '*' : '';
+    const url = AUTHOR_LINKS[name];
+    return (
+      <React.Fragment key={index}>
+        {url ? (
+          <a href={url} target="_blank" rel="noopener noreferrer" className="person-link">{name}</a>
+        ) : name}
+        {suffix}
+        {index < arr.length - 1 ? ', ' : ''}
+      </React.Fragment>
+    );
+  });
+
 const ResearchDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [modalImage, setModalImage] = useState(null);
 
   const researchDetails = {
+    'bu-icpe': {
+      title: "In-Context Pure Exploration in Continuous Decision Spaces (C-ICPE)",
+      institution: "Pacchiano Lab, Boston University",
+      date: "Oct 2025 – Present",
+      overview: "We introduce C-ICPE, a theory-guided method that learns to collect data, stop, and recommend directly from " +
+        "trajectories in continuous recommendation spaces. This type of (ε, δ)-PAC exploration directly addresses problems " +
+        "in experimental sciences such as materials discovery and dose-finding, where each trial is costly, " +
+        "observations are noisy, and practitioners need not just a good answer but a guarantee that the answer is " +
+        "ε-correct with a given confidence.",
+      achievements: [
+        "Derived Lagrangian dual formulation motivating a stop/continue Bellman structure for the fixed-confidence regime",
+        "Proved measurable Bellman attainment over continuous action spaces",
+        "Established correctness under non-unique dual minimizers via a local closedness and subdifferential argument",
+        "Trained a DQN-style stopping critic with adaptive per-step cost tuning to hit target confidence 1−δ",
+        "Performed on wide range of synethetic and realistic benchmarks: Ackley Function, Binary Search, ε-best arm identification, GP value estimation problem, Geochemical Exploration.",
+        "Compared against different basline methods: GP, TPE, and CMA-ES.",
+        "Demonstrated (1-δ)-accuracy with sample complexity significantly lower than the baselines.",
+        "Showed robust generalization to prior misspecification"
+      ],
+      technologies: ["Meta-Learning", "Thompson Sampling", "In-Context Learning", "Bayesian Inference", "Reinforcement Learning", "DQN", "LSTM", "Transformer", "Pytorch", "Pure Exploration", "Bayesian Optimization"],
+      publications: [
+        "Preprint on arXiv (arXiv:2602.17976v2, Aug 2026)",
+        "Accepted (Oral) at the ICML 2026 Workshop on Hypothesis Testing, Seoul, South Korea",
+        "Accepted at the ICML 2026 Workshop: Decision-Making from Offline Datasets to Online Adaptation — Black-Box Optimization to Reinforcement Learning"
+      ],
+      papers: [
+        {
+          title: "In-Context Pure Exploration in Continuous Decision Spaces",
+          venue: "arXiv preprint",
+          authors: "Alessio Russo*, Yin-Ching Lee*, Ryan Welch, Aldo Pacchiano",
+          link: "https://arxiv.org/abs/2602.17976",
+          status: "PREPRINT"
+        }
+      ],
+      media: [
+        {
+          type: 'image',
+          src: process.env.PUBLIC_URL + '/ackley_exploration_3d.png',
+          caption: 'Learned exploration trajectory converging to the global optimum of the 2D Ackley function'
+        }
+      ]
+    },
     'ecs-lab': {
       title: "Autonomous Agile Flights in Dynamic Environments",
       institution: "Extreme Computing System (ECS) Lab, University of Bologna",
-      date: "June 2024 – Present",
+      date: "June 2024 – Aug 2025",
       overview: "Implemented Spiking Neural Networks (SNN) for agile quadrotor control and navigation through complex environments.",
       achievements: [
         "Developed Spike Neural Networks (SNN) for reinforcement learning-based control",
@@ -22,8 +85,16 @@ const ResearchDetail = () => {
       ],
       technologies: ["Reinforcement Learning", "Spiking Neural Networks", "Artificial Neural Networks", "Isaac Gym", "Pytorch", "SKRL", "Population Based Training", "Control Barrier Functions", "Model Predictive Control"],
       publications: [
-        "Submitted a research paper to IEEE COINS conference",
-        "Currently preparing for RA-L submission"
+        "First-authored a research paper to IEEE COINS 2025 conference (accepted)",
+      ],
+      papers: [
+        {
+          title: "Bio-Inspired Drone Control: A Reinforcement Learning-Trained Spiking Neural Networks for Agile Navigation in Dynamic Environment",
+          venue: "2025 IEEE International Conference on Omni-layer Intelligent Systems (COINS)",
+          authors: "Yin-Ching Lee, Sebastiano Mengozzi, Luca Zanatta, Andrea Bartolini, Andrea Acquaviva, Francesco Barchi",
+          link: "https://ieeexplore.ieee.org/abstract/document/11125776",
+          status: "ACCEPTED"
+        },
       ],
       media: [
         {
@@ -61,8 +132,8 @@ const ResearchDetail = () => {
       ],
       technologies: ["HPC Systems", "Generative Models", "Unsupervised Learning", "Variational Autoencoder", "Pytorch", "tensorflow"],
       publications: [
-        "Co-authored a paper submission to ISC-HPC'25 conference as the second contributor (under review)",
-        "Co-authored a paper submission to AAAI'25 workshop as the second contributor (accepted)",
+        "Co-authored a research paper to ISC-HPC'25 conference as the second contributor (accepted)",
+        "Co-authored a workshop paper to AAAI'25 workshop as the second contributor (accepted)",
         "Presented a project poster at the ISC-HPC'24 conference",
         "Presented a research poster at the DATE'23 conference",
         "Presented a tutorial at the LDMSCON'24 conference"
@@ -72,7 +143,7 @@ const ResearchDetail = () => {
           title: "Refine: Robust Unsupervised Anomaly Detection for Production HPC Systems",
           venue: "ISC High Performance 2025",
           authors: "Efe Sencan, Yin-Ching Lee, Connor Casey, Benjamin Schwaller, Vitus J Leung, Jim Brandt, Brian Kulis, Manuel Egele, Ayse K Coskun",
-          link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vbMUW88AAAAJ&citation_for_view=vbMUW88AAAAJ:d1gkVwhDpl0C",
+          link: "https://ieeexplore.ieee.org/document/11018307",
           status: "ACCEPTED"
         },
       ],
@@ -256,7 +327,7 @@ const ResearchDetail = () => {
                           {paper.title}
                         </a>
                       </h5>
-                      <p className="paper-authors">{paper.authors}</p>
+                      <p className="paper-authors">{renderAuthors(paper.authors)}</p>
                       <div className="paper-meta">
                         <span className="paper-venue">{paper.venue}</span>
                         <span className={`paper-status ${paper.status.toLowerCase().replace(' ', '-')}`}>
@@ -328,90 +399,6 @@ const ResearchDetail = () => {
           opacity: 1;
         }
         
-        /* Paper section styles */
-        .papers-section {
-          margin-top: 2rem;
-        }
-        
-        .papers-list {
-          display: flex;
-          flex-direction: column;
-          gap: 1.5rem;
-        }
-        
-        .paper-item {
-          background-color: #f8f9fa;
-          border-radius: 8px;
-          padding: 1.25rem;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-          border-left: 4px solid #3a86ff;
-          transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .paper-item:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .paper-title {
-          margin: 0 0 0.5rem 0;
-          font-size: 1.1rem;
-        }
-        
-        .paper-title a {
-          color: #1a67d2;
-          text-decoration: none;
-          transition: color 0.2s;
-        }
-        
-        .paper-title a:hover {
-          color: #0d4eab;
-          text-decoration: underline;
-        }
-        
-        .paper-authors {
-          color: #444;
-          font-size: 0.9rem;
-          margin: 0.25rem 0 0.75rem;
-          font-style: italic;
-        }
-        
-        .paper-meta {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-top: 0.75rem;
-          font-size: 0.85rem;
-        }
-        
-        .paper-venue {
-          color: #666;
-          font-weight: 500;
-        }
-        
-        .paper-status {
-          display: inline-block;
-          padding: 0.25rem 0.75rem;
-          border-radius: 12px;
-          font-weight: 500;
-          font-size: 0.8rem;
-        }
-        
-        .paper-status.accepted {
-          background-color: #e1f5e1;
-          color: #2e7d32;
-        }
-        
-        .paper-status.published {
-          background-color: #e3f2fd;
-          color: #1565c0;
-        }
-        
-        .paper-status.under-review {
-          background-color: #fff8e1;
-          color: #f57f17;
-        }
-        
         .image-modal-overlay {
           position: fixed;
           top: 0;
@@ -430,10 +417,11 @@ const ResearchDetail = () => {
           position: relative;
           max-width: 90%;
           max-height: 90%;
-          background-color: white;
+          background-color: #0c1120;
+          border: 1px solid rgba(129, 140, 248, 0.25);
           border-radius: 8px;
           overflow: hidden;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
         }
         
         .modal-close-button {
@@ -463,11 +451,12 @@ const ResearchDetail = () => {
         }
         
         .modal-caption {
-          background-color: white;
-          padding: 15px;
+          background-color: #0c1120;
+          color: #94a3b8;
+          padding: 12px 15px;
           margin: 0;
           text-align: center;
-          font-weight: 500;
+          font-size: 0.88rem;
         }
       `}</style>
     </section>

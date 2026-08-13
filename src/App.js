@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
 import Research from './components/Research';
 import ResearchDetail from './components/ResearchDetail';
+import Publications from './components/Publications';
 import WorkExperience from './components/WorkExperience';
 import Projects from './components/Projects';
 import './App.css';
-import RoboticArm from './components/RoboticArm';
-// import NavigationDrone from './components/NavigationDrone';
+import RLBackground from './components/RLBackground';
 
 function AppContent() {
   const [activeTab, setActiveTab] = useState('home');
@@ -26,6 +26,7 @@ function AppContent() {
     { path: '/', tab: 'home', label: 'Home' },
     { path: '/about', tab: 'about', label: 'About' },
     { path: '/research', tab: 'research', label: 'Research' },
+    { path: '/publications', tab: 'publications', label: 'Publications' },
     { path: '/work', tab: 'work', label: 'Work Experience' },
     { path: '/projects', tab: 'projects', label: 'Projects' }
   ];
@@ -50,14 +51,14 @@ function AppContent() {
         </nav>
       </header>
 
-      {/* <NavigationDrone activeTab={activeTab} /> */}
-      <RoboticArm />
+      <RLBackground />
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/research" element={<Research />} />
         <Route path="/research/:id" element={<ResearchDetail />} />
+        <Route path="/publications" element={<Publications />} />
         <Route path="/work" element={<WorkExperience />} />
         <Route path="/projects" element={<Projects />} />
       </Routes>
@@ -67,7 +68,7 @@ function AppContent() {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/profolio">
       <AppContent />
     </Router>
   );

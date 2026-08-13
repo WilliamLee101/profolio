@@ -27,8 +27,8 @@ const About = () => {
       <h2>ABOUT ME</h2>
       <div className="about-content">
         <p>
-          I'm a passionate Computer Science student at Boston University, pursuing both a Bachelor's and Master's degree. My journey
-          in technology has led me to explore various areas of computer science, with a particular focus on machine learning and robotics.
+          I obtained my Bachelor's and Master's degree at Boston University, studying computer science. My journey
+          in technology has led me to explore various areas of computer science, with a particular focus on sequential decision-making.
         </p>
         
         <div className="education-timeline">

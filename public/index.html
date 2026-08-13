@@ -7,10 +7,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="William Lee's Portfolio" />
+
+    <!-- Primary SEO -->
+    <title>Yin-Ching (William) Lee — ML Researcher | Boston University</title>
+    <meta name="description" content="Yin-Ching (William) Lee — MS CS at Boston University, ML researcher in meta-learning, pure exploration, and robotics. Co-author of C-ICPE (arXiv 2026), presented as an oral at the ICML 2026 Workshop on Hypothesis Testing. Also published at IEEE COINS 2025 and ISC-HPC 2025." />
+    <meta name="keywords" content="Yin-Ching Lee, William Lee, ML researcher, Boston University, meta-learning, pure exploration, C-ICPE, in-context learning, Thompson Sampling, reinforcement learning, spiking neural networks, robotics, HPC anomaly detection" />
+    <meta name="author" content="Yin-Ching (William) Lee" />
+
+    <!-- Open Graph (social previews) -->
+    <meta property="og:title" content="Yin-Ching (William) Lee — ML Researcher" />
+    <meta property="og:description" content="MS CS at Boston University. Research in meta-learning, pure exploration, and robotics. Co-author of C-ICPE (arXiv 2026)." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://williamlee101.github.io/profolio" />
+    <meta property="og:image" content="https://williamlee101.github.io/profolio/profile_2.png" />
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Yin-Ching (William) Lee — ML Researcher" />
+    <meta name="twitter:description" content="MS CS at Boston University. Research in meta-learning, pure exploration, and robotics." />
+    <meta name="twitter:image" content="https://williamlee101.github.io/profolio/profile_2.png" />
+
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>William Lee - Portfolio</title>
+
+    <!-- Redirect decode script for BrowserRouter on GitHub Pages -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location));
+    </script>
 </head>
 
 <body>
