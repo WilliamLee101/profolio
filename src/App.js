@@ -13,6 +13,7 @@ import RLBackground from './components/RLBackground';
 
 function AppContent() {
   const [activeTab, setActiveTab] = useState('home');
+  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
   // Update activeTab based on current route
@@ -20,6 +21,11 @@ function AppContent() {
     const path = location.pathname;
     const tab = path === '/' ? 'home' : path.slice(1);
     setActiveTab(tab);
+  }, [location]);
+
+  // Close the mobile menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
   }, [location]);
 
   const navItems = [
@@ -35,7 +41,17 @@ function AppContent() {
     <div className="App">
       <header style={{ position: 'sticky', top: 0, zIndex: 1000 }}>
         <div className="logo">WL</div>
-        <nav className="nav-right">
+        <button
+          className={`menu-toggle ${menuOpen ? 'open' : ''}`}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav className={`nav-right ${menuOpen ? 'open' : ''}`}>
           {navItems.map(({ path, tab, label }) => (
             <Link
               key={tab}

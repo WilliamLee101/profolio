@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 :root {
     /* Background layers */
     --primary-dark:    #150f0c;
@@ -903,6 +909,7 @@ nav a::after {
 .social-buttons {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-top: 1.5rem;
 }
@@ -1437,4 +1444,144 @@ canvas {
 /* 9. Nav link colour on hover */
 .nav-right a:hover {
     color: var(--accent-cyan);
+}
+
+/* ════════════════════════════════════════════════════
+   MOBILE RESPONSIVENESS
+   ════════════════════════════════════════════════════ */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-blue);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    .App {
+        padding: 12px;
+    }
+
+    /* Nav collapses behind a hamburger toggle */
+    .menu-toggle {
+        display: flex;
+    }
+
+    header {
+        flex-wrap: wrap;
+        padding: 14px 16px;
+    }
+
+    .nav-right {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        margin-top: 14px;
+        margin-left: 0;
+    }
+
+    .nav-right.open {
+        display: flex;
+    }
+
+    .nav-right a {
+        width: 100%;
+        padding: 10px 4px;
+    }
+
+    /* Work experience timeline collapses to one column */
+    .work-experience {
+        padding: 0 4px;
+    }
+
+    .timeline::before {
+        left: 22px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        justify-content: flex-start;
+        padding-left: 52px;
+    }
+
+    .experience-card {
+        width: 100%;
+        padding: 18px;
+    }
+
+    .timeline-icon {
+        left: 22px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    /* Education timeline: stack logo below the text instead of beside it */
+    .education-timeline {
+        padding-left: 28px;
+    }
+
+    .education-dot {
+        left: -32px;
+    }
+
+    .education-content {
+        height: auto;
+        padding: 18px;
+    }
+
+    .education-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .education-info {
+        padding-right: 0;
+    }
+
+    .logo-container {
+        position: static;
+        transform: none;
+        width: 56px;
+        height: 56px;
+    }
+
+    /* Research detail: single column */
+    .research-detail-body {
+        grid-template-columns: 1fr;
+    }
+
+    .research-detail {
+        padding: 1.5rem 1rem;
+    }
 }
